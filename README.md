@@ -12,7 +12,7 @@ allprojects {
 		}
 	}
 ```
-## To app Level Gradle
+### To app Level Gradle
 ```ss
 dependencies {
 	        implementation 'com.github.sagarnayak:LogUtil:1.0.0'
@@ -26,13 +26,13 @@ LogUtil.Builder builder = new LogUtil.Builder()
                 .setShouldHideLogInReleaseMode(true, BuildConfig.DEBUG);
 LogUtil logUtil = builder.build();
 ```
-### 3. Start Logging
+## 3. Start Logging
 you can do all levels of logging with the help of logV(), logD(), logI(), logW(), logE(), logA() meothods. all these meothds can either take you string log message or if you want you can send this message with a custom log tag.
-#### Normal Tag
+### Normal Tag
 ```ss
 logUtil.logD("Test debug log.");
 ```
-#### Log with custom Tag
+### Log with custom Tag
 ```ss
 logUtil.logD("CustomDebugTag","Test log with ");
 ```
