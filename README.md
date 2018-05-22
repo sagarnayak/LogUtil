@@ -34,5 +34,5 @@ logUtil.logD("Test debug log.");
 ```
 ### Log with custom Tag
 ```ss
-logUtil.logD("CustomDebugTag","Test log with ");
+logUtil.logD("CustomDebugTag","Test log with custom tag.");
 ```
