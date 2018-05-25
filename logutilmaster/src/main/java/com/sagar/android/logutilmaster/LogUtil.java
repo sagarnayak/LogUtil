@@ -65,13 +65,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logV(String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.v(LOG_TAG, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.v(LOG_TAG, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -81,13 +82,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logD(String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.d(LOG_TAG, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.d(LOG_TAG, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -97,13 +99,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logI(String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.i(LOG_TAG, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.i(LOG_TAG, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -113,13 +116,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logW(String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.w(LOG_TAG, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.w(LOG_TAG, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -129,13 +133,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logE(String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.e(LOG_TAG, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.e(LOG_TAG, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -146,13 +151,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logV(String tag, String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.v(tag, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.v(tag, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -163,13 +169,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logD(String tag, String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.d(tag, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.d(tag, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -180,13 +187,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logI(String tag, String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.i(tag, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.i(tag, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -197,13 +205,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logW(String tag, String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.w(tag, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.w(tag, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -214,13 +223,14 @@ public class LogUtil {
      */
     @SuppressWarnings({"unused", "SameParameterValue", "WeakerAccess"})
     public void logE(String tag, String message) {
-        if (isRunningInDebugMode || OVERRIDE_LOG_CONTROL)
-            for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
-                int start = i * MAX_LOG_LENGTH;
-                int end = (i + 1) * MAX_LOG_LENGTH;
-                end = end > message.length() ? message.length() : end;
-                Log.e(tag, getFormattedString(message, i, start, end));
-            }
+        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+            return;
+        for (int i = 0; i <= message.length() / MAX_LOG_LENGTH; i++) {
+            int start = i * MAX_LOG_LENGTH;
+            int end = (i + 1) * MAX_LOG_LENGTH;
+            end = end > message.length() ? message.length() : end;
+            Log.e(tag, getFormattedString(message, i, start, end));
+        }
     }
 
     /**
@@ -255,7 +265,7 @@ public class LogUtil {
     @SuppressWarnings("unused")
     public static class Builder {
         private String customLogTag = "LogUtil_TAG";
-        private boolean isRunningInDebugMode = false;
+        private boolean isRunningInDebugMode = true;
         private boolean shouldHideLogInReleaseMode = false;
 
         public Builder() {
