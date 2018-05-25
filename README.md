@@ -15,7 +15,7 @@ allprojects {
 ### To app Level Gradle
 ```ss
 dependencies {
-	        implementation 'com.github.sagarnayak:LogUtil:1.0.0'
+	        implementation 'com.github.sagarnayak:LogUtil:1.0.1'
 	}
 ```
 ## 2. Initialise
