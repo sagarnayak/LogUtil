@@ -4,7 +4,7 @@ A simple android utility library to make your logging easy in your android app. 
 
 ## 1. Add to Gradle
 ### To Project Level Gradle
-```ss
+```gradle
 allprojects {
 		repositories {
 			...
@@ -13,18 +13,33 @@ allprojects {
 	}
 ```
 ### To app Level Gradle
-```ss
+#### Java
+```gradle
 dependencies {
 	        implementation 'com.github.sagarnayak:LogUtil:1.0.1'
 	}
 ```
+#### Kotlin
+```gradle
+dependencies {
+	        implementation 'com.github.sagarnayak:LogUtil:2.0.0'
+	}
+```
 ## 2. Initialise
 You can do the initialisation at the application class to keep it centralised. also this approach is good for using the dependency injection.
-```ss
+#### Java
+```java
 LogUtil.Builder builder = new LogUtil.Builder()
                 .setCustomLogTag("Custom_Log_Tag")
                 .setShouldHideLogInReleaseMode(true, BuildConfig.DEBUG);
 LogUtil logUtil = builder.build();
+```
+#### Kotlin
+```kotlin
+val builder = LogUtil.Builder()
+	.setCustomLogTag("Custom_Log_Tag")
+	.setShouldHideLogInReleaseMode(true, BuildConfig.DEBUG)
+var logUtil = builder.build()
 ```
 ## 3. Start Logging
 you can do all levels of logging with the help of logV(), logD(), logI(), logW(), logE(), logA() meothods. all these meothds can either take you string log message or if you want you can send this message with a custom log tag.
