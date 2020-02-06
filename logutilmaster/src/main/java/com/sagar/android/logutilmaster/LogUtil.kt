@@ -66,6 +66,7 @@ class LogUtil(builder: Builder) {
      * @param message message to print
      */
     fun logV(message: String) {
+        newLog(message, LogLevel.VERBOSE)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -82,6 +83,7 @@ class LogUtil(builder: Builder) {
      * @param message message to print
      */
     fun logD(message: String) {
+        newLog(message, LogLevel.DEBUG)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -98,6 +100,7 @@ class LogUtil(builder: Builder) {
      * @param message message to print
      */
     fun logI(message: String) {
+        newLog(message, LogLevel.INFO)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -114,6 +117,7 @@ class LogUtil(builder: Builder) {
      * @param message message to print
      */
     fun logW(message: String) {
+        newLog(message, LogLevel.WARN)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -130,6 +134,7 @@ class LogUtil(builder: Builder) {
      * @param message message to print
      */
     fun logE(message: String) {
+        newLog(message, LogLevel.ERROR)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -147,6 +152,7 @@ class LogUtil(builder: Builder) {
      * @param message log message
      */
     fun logV(tag: String, message: String) {
+        newLog(message, LogLevel.VERBOSE, tag)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -164,6 +170,7 @@ class LogUtil(builder: Builder) {
      * @param message log message
      */
     fun logD(tag: String, message: String) {
+        newLog(message, LogLevel.DEBUG, tag)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -181,6 +188,7 @@ class LogUtil(builder: Builder) {
      * @param message log message
      */
     fun logI(tag: String, message: String) {
+        newLog(message, LogLevel.INFO, tag)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -198,6 +206,7 @@ class LogUtil(builder: Builder) {
      * @param message log message
      */
     fun logW(tag: String, message: String) {
+        newLog(message, LogLevel.WARN, tag)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -215,6 +224,7 @@ class LogUtil(builder: Builder) {
      * @param message log message
      */
     fun logE(tag: String, message: String) {
+        newLog(message, LogLevel.ERROR, tag)
         if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
@@ -272,5 +282,16 @@ class LogUtil(builder: Builder) {
         fun build(): LogUtil {
             return LogUtil(this)
         }
+    }
+
+    private lateinit var logUtilContract: LogUtilContract
+
+    fun registerForCallback(logUtilContract: LogUtilContract) {
+        this.logUtilContract = logUtilContract
+    }
+
+    private fun newLog(message: String, logLevel: LogLevel, tag: String? = null) {
+        if (this::logUtilContract.isInitialized)
+            logUtilContract.logged(message, logLevel, tag ?: LOG_TAG)
     }
 }
