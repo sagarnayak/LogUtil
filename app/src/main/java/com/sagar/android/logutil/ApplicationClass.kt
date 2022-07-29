@@ -15,8 +15,8 @@ class ApplicationClass : Application() {
 
     private fun initialiseLogUtil() {
         val builder = LogUtil.Builder()
-                .setCustomLogTag("Custom_Log_Tag")
-                .setShouldHideLogInReleaseMode(true, BuildConfig.DEBUG)
+            .setCustomLogTag("Custom_Log_Tag")
+            .setShouldHideLog(false)
         logUtil = builder.build()
     }
 }
