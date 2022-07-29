@@ -44,7 +44,7 @@ class LogUtil(builder: Builder) {
      * by default the class will not print any logs in release apk. and if you want to print logs
      * even in release apk then just make this value as TRUE. otherwise make it FALSE.
      */
-    private val OVERRIDE_LOG_CONTROL: Boolean
+    private val SHOW_LOG: Boolean
 
     /**
      * this is the max length of the log after which the longer logs are split. log of any length
@@ -52,12 +52,9 @@ class LogUtil(builder: Builder) {
      */
     private val MAX_LOG_LENGTH = 1000
 
-    private val isRunningInDebugMode: Boolean
-
     init {
         this.LOG_TAG = builder.customLogTag
-        this.OVERRIDE_LOG_CONTROL = builder.shouldHideLogInReleaseMode
-        this.isRunningInDebugMode = builder.isRunningInDebugMode
+        this.SHOW_LOG = builder.shouldShowLog
     }
 
     /**
@@ -67,7 +64,7 @@ class LogUtil(builder: Builder) {
      */
     fun logV(message: String) {
         newLog(message, LogLevel.VERBOSE)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -84,7 +81,7 @@ class LogUtil(builder: Builder) {
      */
     fun logD(message: String) {
         newLog(message, LogLevel.DEBUG)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -101,7 +98,7 @@ class LogUtil(builder: Builder) {
      */
     fun logI(message: String) {
         newLog(message, LogLevel.INFO)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -118,7 +115,7 @@ class LogUtil(builder: Builder) {
      */
     fun logW(message: String) {
         newLog(message, LogLevel.WARN)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -135,7 +132,7 @@ class LogUtil(builder: Builder) {
      */
     fun logE(message: String) {
         newLog(message, LogLevel.ERROR)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -153,7 +150,7 @@ class LogUtil(builder: Builder) {
      */
     fun logV(tag: String, message: String) {
         newLog(message, LogLevel.VERBOSE, tag)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -171,7 +168,7 @@ class LogUtil(builder: Builder) {
      */
     fun logD(tag: String, message: String) {
         newLog(message, LogLevel.DEBUG, tag)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -189,7 +186,7 @@ class LogUtil(builder: Builder) {
      */
     fun logI(tag: String, message: String) {
         newLog(message, LogLevel.INFO, tag)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -207,7 +204,7 @@ class LogUtil(builder: Builder) {
      */
     fun logW(tag: String, message: String) {
         newLog(message, LogLevel.WARN, tag)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -225,7 +222,7 @@ class LogUtil(builder: Builder) {
      */
     fun logE(tag: String, message: String) {
         newLog(message, LogLevel.ERROR, tag)
-        if (!isRunningInDebugMode && OVERRIDE_LOG_CONTROL)
+        if (!SHOW_LOG)
             return
         for (i in 0..message.length / MAX_LOG_LENGTH) {
             val start = i * MAX_LOG_LENGTH
@@ -265,17 +262,15 @@ class LogUtil(builder: Builder) {
      */
     class Builder {
         var customLogTag = "LogUtil_TAG"
-        var isRunningInDebugMode = true
-        var shouldHideLogInReleaseMode = false
+        var shouldShowLog = false
 
         fun setCustomLogTag(customLogTag: String): Builder {
             this.customLogTag = customLogTag
             return this
         }
 
-        fun setShouldHideLogInReleaseMode(shouldHideLogInReleaseMode: Boolean, runningInDebugMode: Boolean): Builder {
-            this.shouldHideLogInReleaseMode = shouldHideLogInReleaseMode
-            isRunningInDebugMode = runningInDebugMode
+        fun setShouldHideLog(shouldShowLog: Boolean): Builder {
+            this.shouldShowLog = shouldShowLog
             return this
         }
 
